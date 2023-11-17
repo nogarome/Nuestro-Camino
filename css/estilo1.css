@@ -48,7 +48,7 @@ main{
   "s"
   "f";
   background-image: linear-gradient(rgba(239, 247, 254, 0.5), rgba(239, 247, 254, 0.5)), 
-  url(/img/Mapa.jpg);
+  url(..\img\Mapa.jpg);
 }
 
 header{    
@@ -59,7 +59,7 @@ header{
   "l1 ct l2";
   justify-items: center;
   background-image: linear-gradient(rgba(239, 247, 254, 0.5), rgba(239, 247, 254, 0.5)), 
-url(/img/Mapa.jpg);    
+url(..\img\Mapa.jpg);    
 }
 
 .contenido-cabecera{    
