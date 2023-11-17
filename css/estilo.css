@@ -18,7 +18,7 @@ body
     grid-template-rows: 1fr 200px;
     background-color: rgba(4, 58, 194, 0.8);
     background-image: linear-gradient(rgba(239, 247, 254, 0.5), rgba(239, 247, 254, 0.5)), 
-    url(./img/zzz.png);        
+    url(\img\zzz.png);        
  }
 
  section{
