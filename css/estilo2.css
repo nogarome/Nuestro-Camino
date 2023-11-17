@@ -1,0 +1,52 @@
+html,
+body
+ {
+  height: 100vh;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+ }
+
+ html {
+    box-sizing: border-box;
+    font-size: 62.5%; /** Reset para REMS - 62.5% = 10px de 16px **/
+    font-family: 'Nunito', sans-serif; 
+  }
+
+ body{
+    display: grid;    
+    grid-template-rows: 1fr 200px;    
+ }
+
+ section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+ }
+
+ h1{
+    font-size: 10rem;
+    background-color: aqua;
+ }
+    
+
+ h2{
+    font-size: 7rem;
+    background-color: blueviolet;
+    
+ }
+
+ header{
+    display: grid;
+    background-color: burlywood;
+    align-items: center;
+    justify-content: center;
+ }
+
+ section{
+    background-color: bisque;
+ }
+
+ 
+ 
+
+

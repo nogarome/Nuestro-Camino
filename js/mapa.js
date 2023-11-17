@@ -1,11 +1,9 @@
 var opts = {
   mapa: {
-    center: [40.3, -3.716667],
-    
+    center: [40.3, -3.716667],    
     zoom: 5,
     zoomControl: false,
   },
-  
   
   otmLayer: {
     url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
@@ -14,12 +12,7 @@ var opts = {
         maxZoom: 17,        
     },
   },
-  ormLayer: {
-    url: 'http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
-    options: {
-        maxZoom: 17,      
-    },
-  },
+  
   osmLayer: {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       options: {
@@ -34,8 +27,9 @@ var opts = {
   },
   layersControl: {
     options: {
-      position: 'topright',
-      collapsed: false,           
+      position: 'bottomleft',
+      collapsed: true,
+                    
     },
   },
   
@@ -47,15 +41,13 @@ var opts = {
       },
     },
   },
-  
-  
 };
 
 var tracks = [ 
   "tracks/1º Tramo.gpx",
   "tracks/2º Tramo.gpx",
   "tracks/3º Tramo.gpx",
-  "tracks/4º Tramo.gpx",  
+  "tracks/4º Tramo.gpx",
   "tracks/2019-09-23.gpx",
   "tracks/2019-09-24.gpx",
   "tracks/2019-09-25.gpx",
@@ -78,8 +70,7 @@ var tracks = [
   "tracks/2023-10-10.gpx",
   "tracks/2023-10-11.gpx",
   "tracks/2023-10-12.gpx",
-  "tracks/2023-10-13.gpx",
-      
+  "tracks/2023-10-13.gpx",        
 ];
 
 var points = [
@@ -113,12 +104,10 @@ var points = [
 
 var map = L.map('map', opts.mapa);
 
-
-
 var baseLayers = {};
 
 baseLayers["Satelite"] = L.tileLayer(opts.satelliteLayer.url, opts.satelliteLayer.options);
-baseLayers["Relieve"] = new L.tileLayer(opts.ormLayer.url, opts.ormLayer.options);
+/* baseLayers["Relieve"] = new L.tileLayer(opts.ormLayer.url, opts.ormLayer.options); */
 baseLayers["Topo"] = new L.TileLayer(opts.otmLayer.url, opts.otmLayer.options);
 baseLayers["Callejero"] = new L.TileLayer(opts.osmLayer.url, opts.osmLayer.options);
 
@@ -150,11 +139,6 @@ L.GpxGroup.include({
      var hex = '#' + this._rgbToHex(rgb[0], rgb[1], rgb[2]);
      colors.push(hex);
     }
-
-    // CUSTOM behaviour
-
-    // var colors = ['#00FF00', '#00FF00', '#00FF00', '#00FF00', '#00FF00', '#00FF00', '#00FF00', '#00FFFF', '#00FFFF', '#00FFFF', '#00FFFF', '#00FFFF', '#FF0080', '#FF0080', '#FF0080', '#FF0080', '#FF0080', '#FF0080', '#FF4000', '#FF4000', '#FF4000', '#FF4000', '#FF4000', '#09ff00', '#09ff00', '#09ff00', '#09ff00', '#09ff00', '#0310ff', '', '', ''];
-
     return colors;
   },
 
@@ -166,32 +150,19 @@ var routes = L.gpxGroup( tracks,{
   elevation: true,
   elevation_options: {
     theme: "lime-theme",
-    detachedView: false,
+    detachedView: true,
     elevationDiv: '#elevation-div',
     followPositionMarker: true,
     zFollow: 12,
-    height:121,                 
+    height:121,                     
   },
   legend: true,
-  legend_options: {
-    position: "bottomright",
-    collapsed:true,                               
+  legend_options: {    
+    collapsed:false,
+    position: 'bottomright',                                   
 },
   distanceMarkers: false,
 });
-
-
-
- // Preload a default chart / track.
- //routes.once( 'loaded', function( e ) {
-
-  // Select a default track ( 0 = first element ).
-  //var i = (0); //   ALTERNATIVE:tracks.indexOf(3);
-  //var route = this._routes[Object.keys( this._routes )[i]];
-  
-  // Select chart.
-  //this.setSelection( route );  
-//});
 
 map.on('eledata_added eledata_clear', function(e) {
   var p = document.querySelector(".chart-placeholder");
@@ -209,9 +180,6 @@ map.on('eledata_added', function(e) {
   q('.minele .summaryvalue').innerHTML = track.elevation_min.toFixed(2) + " m";
 });
 
-
-
-
 controlLayer.addTo(map);
 //controlScale.addTo(map);
 //controlZoom.addTo(map);
@@ -219,14 +187,7 @@ controlLayer.addTo(map);
 //controlLocate.addTo(map);
 //controlMiniMap.addTo(map);
 
-
-
-
 routes.addTo(map);
-
-
-
-
 
 map.addLayer(baseLayers["Satelite"]);
 

@@ -5057,7 +5057,7 @@ var Layers = Control.extend({
 	expand: function () {
 		addClass(this._container, 'leaflet-control-layers-expanded');
 		this._section.style.height = null;
-		var acceptableHeight = this._map.getSize().y - (this._container.offsetTop + 50);
+		var acceptableHeight = this._map.getSize().y - (this._container.offsetTop + -65);
 		if (acceptableHeight < this._section.clientHeight) {
 			addClass(this._section, 'leaflet-control-layers-scrollbar');
 			this._section.style.height = acceptableHeight + 'px';
