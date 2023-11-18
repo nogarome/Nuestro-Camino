@@ -43,11 +43,7 @@ var opts = {
   },
 };
 
-var tracks = [ 
-  "tracks/1º Tramo.gpx",
-  "tracks/2º Tramo.gpx",
-  "tracks/3º Tramo.gpx",
-  "tracks/4º Tramo.gpx",
+var tracks = [   
   "tracks/2019-09-23.gpx",
   "tracks/2019-09-24.gpx",
   "tracks/2019-09-25.gpx",
